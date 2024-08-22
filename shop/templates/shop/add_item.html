@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<h1>Add a new item</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <!-- Upload Photo Field -->
+    <div>
+        
+        <input type="file" id="id_photo" name="photo" accept="image/*">
+    </div>
+    
+    <button type="submit">Add item</button>
+</form>
+<a href="{% url 'shop:item_list' %}">Back to items list</a>
+{% endblock %}

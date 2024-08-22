@@ -1,0 +1,36 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+
+<section class="item-forms">
+    <article class="forms-card">
+<div class="post">
+    
+    <h1>{{ item.name }}</h1>
+    <p>Year: {{ item.year }}</p>
+    <p>Power: {{ item.power }}</p>
+    <p>Fuel: {{ item.fuel }}</p>
+    <p>Cabin Type: {{ item.cabin_type }}</p> 
+    <p>Price: {{ item.price }}</p>
+    <p>Phone Number: {{ item.phone_number }}</p>
+    <p>Description: {{ item.description }}</p>
+   
+    <p class="author">Author: {{ item.owner.username }}</p>
+    {% if item.photo %}
+    <div class="item-image-container">
+        <img src="{{ item.photo.url }}" alt="{{ item.name }} Photo">
+    </div>
+    {% endif %}
+    {% if item.owner == user %}
+    <div class="item-detail-buttons">
+        <a class="btn btn-outline-success" href="{% url 'shop:item_update' item.id %}">Update</a>
+        <a class="btn btn-outline-danger" href="{% url 'shop:item_confirm_delete' item.id %}">Delete</a>
+    </div>
+    {% endif %}
+</div>
+
+</article>
+</section>
+
+{% endblock %}

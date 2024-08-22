@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+
+</style>
+
+<section class="post-forms">
+  <article class="forms-card">
+    
+            <div class="post">
+
+              <h2><a class="text-light" href="#">{{ object.title }}</a></h2>
+              <p class="text-light">{{ object.content }}
+                <br>
+                <br>
+              {% if object.image %}
+              
+              <img class = "post-image" src="{{ object.image.url }}" alt="{{ object.title }} Image">
+            {% endif %}
+            
+
+            
+              <img class="avatar" src="{{ object.author.profile.image.url }}" alt="">
+              <a class="text-dark" href="#">{{ object.author }}</a>
+              <small class="text-light">{{ object.date_posted }}</small> <br>
+                {% if object.author == user %} 
+
+                  <div>
+                      <a class="btn btn-outline-success" href="{% url 'blog-update' object.id %}">Update</a>
+                      <a class="btn btn-outline-danger" href="{% url 'blog-delete' object.id %}">Delete</a>
+                  </div>
+                {% endif %}
+            </div>
+          
+</article>
+
+</section>
+
+<style>
+
+</style>
+{% endblock content %}

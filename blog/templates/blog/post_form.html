@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+<style>
+
+</style>
+
+
+<section class="post-forms">
+    <article class="forms-card">
+        <form action="" method="post">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <h3>Post Nou<h3>
+                <input type="text" id="title" name="title" class="form-control" placeholder="Enter your title">
+                <textarea id="content" name="content" class="form-control" placeholder="Write your content here"></textarea>
+            </fieldset>
+            <input style="background-color: white;" type="file" id="id_photo" name="photo" accept="image/*">
+            <button type="submit" class="form-btn">Posteaza</button>
+    </article>
+    </section>
+{% endblock content %}
+
+
+
+</div>
+

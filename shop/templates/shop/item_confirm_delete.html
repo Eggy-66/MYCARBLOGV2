@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<section class="item-forms">
+    <article class="forms-card text-light">
+        <div class="post">
+<h1>Confirm Delete</h1>
+<p>Are you sure you want to delete "{{ object.name }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button class="form-btn" type="submit">Delete</button>
+</form>
+<a href="{% url 'shop:item_list' %}">Back to items list</a>
+</div>
+</article>
+</section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+
+</head>
+<body>
+
+<section class="home-blog">
+      <div class="content-section">
+        {% for post in posts %}
+        <article class="home-post">
+          <div class="media">
+              <img src="{{ post.image.url | default_if_none:'/path/to/placeholder.png' }}" alt="Author Image">
+          </div>
+          <div class="media-body">
+              <div class="article-metadata">
+                  <h4 class="text-author" href="#">{{ post.author }}</h4>
+                  <small class="text-white">{{ post.date_posted }}</small>
+              </div>
+              <h2 class="article-title"><a class="text-light" href="{% url 'blog-detail' post.id %}">{{ post.title }}</a></h2>
+              <p class="text-light">{{ post.content|truncatewords:50 }}</p>
+              
+                  
+                  
+              
+          </div>
+        </article>
+        {% endfor %}
+        </div>
+
+</section>
+
+
+</body>
+{% endblock content %}

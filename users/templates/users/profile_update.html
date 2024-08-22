@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<section class="post-forms">
+    <article class="forms-card">
+      <div class="post">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 text-light">Update Profile</legend>
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button type="submit" class="form-btn">Update</button>
+<!--                <button class="btn btn-outline-info" type="submit"><a href="{% url 'profile' %}">Go Back</a></button>-->
+            </div>
+
+        </form>
+
+    </div>
+</article>
+</section>
+{% endblock content %}

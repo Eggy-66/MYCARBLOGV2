@@ -1,0 +1,111 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="insigna">
+
+    </div>
+
+<!--services-->
+<section class="services">
+    <div class="services-center">
+        <article class="service">
+            <div class="service-icon">
+               <i class="fa-solid fa-dungeon"></i>
+            </div>
+            <div class="service-text">
+                <h3>garaj reparații</h3>
+                <p>Expertiză și cunoștințe tehnice solide pentru remedierea problemelor diverse.</p>
+            </div>
+        </article>
+        <article class="service">
+           <div class="service-icon">
+               <i class="fas fa-car"></i>
+           </div>
+           <div class="service-text">
+               <h3>Mașini de valoare</h3>
+               <p>Vehicule ce oferă performanțe superioare și experiențe de condus plăcute.</p>
+           </div>
+       </article>
+       <article class="service">
+           <div class="service-icon">
+               <i class="fas fa-space-shuttle"></i>
+           </div>
+           <div class="service-text">
+               <h3>Tindem spre mai mult</h3>
+               <p>Valorificarea experiențelor pentru a crește și a evolua.</p>
+           </div>
+       </article>
+    </div>
+   
+   </section>
+   
+   
+   
+   
+   
+   <!--end of services-->
+   <!--Projects-->
+   <section class="projects">
+   <!--title-->
+   <div class="title">
+       <h2>Proiecte</h2>
+       <div class="title-underline"></div>
+   </div>
+   <!--end of title-->
+   <div class="projects-center">
+       <article class="project">
+           <img src="{% static '/css/img/project-1.jpeg' %}" alt="car">
+       </article>
+       <article class="project">
+           <img src="{% static '/css/img/project-2.jpeg' %}" alt="car">
+       </article>
+       <article class="project">
+           <img src="{% static '/css/img/project-3.jpeg' %}" alt="car">
+       </article>
+       <article class="project">
+           <img src="{% static '/css/img/project-4.jpg' %}" alt="car">
+       </article>
+       <article class="project">
+           <img src="{% static '/css/img/project-5.jpeg' %}" alt="car">
+       </article>
+       <article class="project">
+           <img src="{% static '/css/img/project-6.jpeg' %}" alt="car">
+       </article>
+   
+   </div>
+   
+   </section>
+   <!--end of projects-->
+   
+   <!--about section-->
+   <section class="about">
+       <article class="about-card">
+           <h3>despre noi</h3>
+           <i class="fas fa-car"></i>
+           <p>Platforma noastră dedicată fanilor Honda oferă o experiență captivantă, conectând pasionații automobilelor la ultimele știri, recenzii și evenimente legate de marca Honda. 
+               Cu articole detaliate, informații despre modele, istorie și inovații tehnologice, explorăm universul fascinant al vehiculelor Honda. 
+               Prin galerii foto atractive și comunitatea noastră implicată, încurajăm schimbul de idei și pasiunea comună pentru această marcă emblematică, ducând entuziasmul pentru Honda la un nivel superior."</p>
+       </article>
+   </section>
+   <!--end of about section-->
+   <!--filler section-->
+   <section class="filler"></section>
+   <!--end of filler section-->
+   <!--contact-->
+   <section class="post-forms">
+   <article class="forms-card">
+       <form>
+           <h3>contact us</h3>
+           <input class="form-control" type="text" id="name" placeholder="Your name">
+           <input class="form-control" type="text" id="email" placeholder="Your email">
+       <textarea class="form-control" name="comment" id="" cols="30" rows="10" placeholder="Leave a comment">
+       </textarea>
+       <button type="submit" class="form-btn">Send</button>
+       </form>
+   </article>
+   </section>
+   <!--end of contact-->
+{% endblock %}
