@@ -73,7 +73,9 @@
 }
 
 .add-item-link:hover {
-    text-decoration: underline;
+    
+    color: white;
+    text-decoration: none;
 }
 
 /* Pagination styles */
@@ -117,8 +119,7 @@
 
 
 .collapsible {
-   
-    color: #B20F0F;
+    color: var(--fifth-color); 
     background: linear-gradient(rgba(0, 0, 0, 0.346), rgba(255, 255, 255, 0.074));
     cursor: pointer;
     padding: 10px;
@@ -128,6 +129,12 @@
     outline: none;
     font-size: 1rem;
     margin-bottom: 10px;
+    transition: color 0.3s, background 0.3s; /* Smooth transition for color and background */
+}
+
+.collapsible:hover {
+    color: red; /* Change text color to red */
+    background: linear-gradient(rgba(255, 0, 0, 0.3), rgba(255, 255, 255, 0.3)); /* Highlight background */
 }
 
 /* Style the content */
@@ -160,10 +167,6 @@
 }
 
 
-
-.filter-button:hover {
-  /*   background-color: #0056b3; Darker button color on hover */
-}
 
 </style>
 <section class="shop">
@@ -211,7 +214,7 @@
     </div>
     
     </form>
-    <h1>Items</h1>
+    
     <ul class="item-list">
         
         {% for item in page_obj %}
@@ -226,14 +229,15 @@
                 <a href="{% url 'shop:item_detail' item.pk %}">
                     <h2>{{ item.name }}</h2>
                 </a>
-                <p>Model: {{ item.model }}</p>
+                <!-- <p>Model: {{ item.model }}</p> -->
                 <p>Year: {{ item.year }}</p>
                 <p>Power: {{ item.power }}</p>
                 <p>Fuel: {{ item.fuel }}</p>
                 <p>Cabin Type: {{ item.cabin_type }}</p>
                 <p>Price: ${{ item.price }}</p>
-                <p>Phone Number: {{ item.phone_nr }}</p>
-                <p>Description: {{ item.description|truncatewords:3 }}</p>
+                <!-- <p>Phone Number: {{ item.phone_nr }}</p> -->
+                <!-- <p>Description: {{ item.description|truncatewords:3 }}</p> -->
+                
             </div>
         </li>
         {% empty %}

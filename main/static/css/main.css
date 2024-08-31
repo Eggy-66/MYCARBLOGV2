@@ -9,9 +9,10 @@
     --primary-color: #df1313; /* A nice shade of blue */
     --secondary-color: #B20F0F; 
     --tertiary-color: #B20F0F; 
-    --fourth-color: #f9f8f4; 
-    --fifth-color: white; 
+    --fourth-color: linear-gradient(90deg, white 70%, #e6de00 70%), #e6de00;; 
+    --fifth-color: rgb(255, 255, 255); 
     --sixth-color: black; 
+    --seventh-color: #dfd804; 
 }
 body{
     font-family: "Kanit", sans-serif;
@@ -164,7 +165,7 @@ header{
 }
 
 .service{
-    color: var(--fourth-color);
+    color: var(--fifth-color);
     display: flex;
     margin: 40px;
 }
@@ -174,14 +175,16 @@ header{
     font-size: 60px;
     margin-right: 20px;
     padding: 20px;
-    border: 3px solid var(--fourth-color);
+    border: 3px solid var(--seventh-color);
     border-radius: 50px;
+    color: var(--primary-color);
 
 }
 
 .service-text h3{
     text-transform: uppercase;
     line-height: 2;
+    color: white;
 
 }
 
@@ -212,7 +215,7 @@ margin-top: 5px;
 }
 
 .title h2{
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
     text-transform: uppercase;
     color: var(--tertiary-color);
@@ -226,7 +229,7 @@ margin-top: 5px;
 }
 
 .title{
-    padding: 50px 0;
+    padding: 40px 0;
 }
 
 .project{
@@ -262,7 +265,7 @@ margin-top: 5px;
 .about{
     min-height: 100vh;
     padding: 100px 0;
-    background: url(img/about-bcg.jpeg)center/cover
+    background: url(img/girl-moto-2.jpg)center/cover
     fixed no-repeat;
     display: flex;
     justify-content: center;
@@ -307,12 +310,29 @@ margin-top: 5px;
     background: url(img/filler-bcg.jpeg)center/cover
     fixed no-repeat;
 }
-.insigna{
+.insigna {
+    position: relative;
     min-height: 100vh;
-    background: url(img/header-car.jpg)center/cover
-    fixed no-repeat;
-    
+    overflow: hidden; /* Ensure the video does not overflow */
 }
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Scale the video to cover the container */
+    z-index: -1; /* Ensure the video is behind any content */
+}
+
+/* Optional: Style for any content over the video */
+.insigna-content {
+    position: relative;
+    z-index: 1; /* Ensure content is above the video */
+    color: white; /* Example text color */
+}
+
 /*############contact##################*/
 /*#Parent container#*/
 
@@ -417,7 +437,7 @@ width: 700px; /* Ensures the image does not exceed the container width */
     padding-top: 100px;
     padding-bottom: 65px;
     min-height: 80vh;
-    background: url(img/about-bcg.jpeg) center/cover no-repeat;
+    background: url(img/red-car-girl.jpg) center/cover fixed no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -455,7 +475,8 @@ width: 700px; /* Ensures the image does not exceed the container width */
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    z-index: 0;
+    position: relative;
 }
 /*#Child container#*/
 /* .post-forms-card{
@@ -500,7 +521,7 @@ form{
     flex: 0 0 60%;
     display: flex;
     flex-direction: column;
-    
+    justify-content: center;
 
 }
 
@@ -518,20 +539,26 @@ form h3{
 .form-control {
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     border: 3px solid var(--primary-color);
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 20px;
+    
 }
 .white-text {
         color: white;
     }
-
-    .form-btn {
-    border-radius: 4px;
-    margin: 10px auto 0;
+.form-file {
+    width: 100%;
+    padding: 10px;
+    
+    border: none;
+    font-size: 15px;
 }
+  /*   .form-btn {
+    border-radius: 4px;
+    margin: 10px auto 0; 
+}*/
 
 /* form textarea{
     padding: 5px;
@@ -544,7 +571,7 @@ textarea::placeholder{
     
     color: var(--secondary-color);}
 
-.form-btn{
+/* .form-btn{
     margin-top: 20px;
     font-size: 20px;
     border-radius: 10px;
@@ -559,4 +586,35 @@ textarea::placeholder{
 .form-btn:hover{
     color: var(--primary-color);
     background: var(--fourth-color);
+} */
+
+/* buttons */
+/* Ensure the container of the button is centered */
+.form, .forms-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center horizontally */
 }
+
+/* Center the button within its container */
+/* Ensure the container of the button is centered */
+.form, .forms-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center horizontally */
+}
+
+/* Center the button within its container */
+/* Container for the buttons */
+.button-container {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Adjust gap between buttons if needed */
+}
+
+/* Adjusted button styles */

@@ -26,10 +26,20 @@
               <small class="text-light">{{ object.date_posted }}</small> <br>
                 {% if object.author == user %} 
 
-                  <div>
-                      <a class="btn btn-outline-success" href="{% url 'blog-update' object.id %}">Update</a>
-                      <a class="btn btn-outline-danger" href="{% url 'blog-delete' object.id %}">Delete</a>
+
+                  <div class="button-container"> <!-- Ensure this container is centered -->
+                    <a class="cybr-btn" href="{% url 'blog-update' object.id %}">
+                      editeaza<span aria-hidden>_</span>
+                      <span class="cybr-btn__glitch">editeaza</span>
+                      <span class="cybr-btn__tag">R25</span>
+                    </a>
+                    <a class="cybr-btn" href="{% url 'blog-delete' object.id %}">
+                      Sterge<span aria-hidden>_</span>
+                      <span class="cybr-btn__glitch">Sterge</span>
+                      <span class="cybr-btn__tag">R25</span>
+                    </a>
                   </div>
+                  
                 {% endif %}
             </div>
           

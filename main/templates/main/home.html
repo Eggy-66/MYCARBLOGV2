@@ -4,9 +4,15 @@
 
 {% block content %}
 
-    <div class="insigna">
+<div class="insigna">
+       
 
-    </div>
+    <video autoplay muted playsinline class="background-video">
+        <source src="{% static '/css/img/insigna_mid.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <!-- Add your content here -->
+</div>
 
 <!--services-->
 <section class="services">
@@ -16,7 +22,7 @@
                <i class="fa-solid fa-dungeon"></i>
             </div>
             <div class="service-text">
-                <h3>garaj reparații</h3>
+                <h3>garaj reparatii</h3>
                 <p>Expertiză și cunoștințe tehnice solide pentru remedierea problemelor diverse.</p>
             </div>
         </article>
@@ -41,11 +47,16 @@
     </div>
    
    </section>
-   
-   
-   
-   
-   
+   <!-- <button class="cybr-btn">
+    Cyber<span aria-hidden>_</span>
+    <span class="cybr-btn__glitch">Cyber_</span>
+    <span class="cybr-btn__tag">R25</span>
+  </button>
+  <button class="cybr-btn">
+    Buttons<span aria-hidden>_</span>
+    <span class="cybr-btn__glitch">Buttons_</span>
+    <span class="cybr-btn__tag">R25</span>
+  </button> -->
    <!--end of services-->
    <!--Projects-->
    <section class="projects">
@@ -80,7 +91,7 @@
    </section>
    <!--end of projects-->
    
-   <!--about section-->
+
    <section class="about">
        <article class="about-card">
            <h3>despre noi</h3>
@@ -90,20 +101,31 @@
                Prin galerii foto atractive și comunitatea noastră implicată, încurajăm schimbul de idei și pasiunea comună pentru această marcă emblematică, ducând entuziasmul pentru Honda la un nivel superior."</p>
        </article>
    </section>
-   <!--end of about section-->
-   <!--filler section-->
-   <section class="filler"></section>
-   <!--end of filler section-->
+   
+
+   <!--filler section, motor-->
+
+
+      
+    </article>
+</section>
    <!--contact-->
    <section class="post-forms">
    <article class="forms-card">
        <form>
-           <h3>contact us</h3>
+           <h3>contacteaza-ne</h3>
            <input class="form-control" type="text" id="name" placeholder="Your name">
            <input class="form-control" type="text" id="email" placeholder="Your email">
        <textarea class="form-control" name="comment" id="" cols="30" rows="10" placeholder="Leave a comment">
        </textarea>
-       <button type="submit" class="form-btn">Send</button>
+       <!-- <button type="submit" class="form-btn">Send</button> -->
+
+      <button type="submit" class="cybr-btn">
+        Trimite<span aria-hidden>_</span>
+        <span class="cybr-btn__glitch">Trimite_</span>
+        <span class="cybr-btn__tag">R25</span>
+      </button>
+      
        </form>
    </article>
    </section>
