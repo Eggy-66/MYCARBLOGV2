@@ -9,9 +9,9 @@
 <section class="post-forms">
   <article class="forms-card">
     <div class="post">
-      <div>
+      <div class="profile">
         <img width="200" height="200" src="{{ user.profile.image.url }}" alt="User-Profile-Image">
-      </div>
+      
       <h1 id="profile-h1">{{ user.username|title }}</h1>
       <p class="title">{{ user.email }}</p>
 
@@ -22,9 +22,17 @@
           {{ p_form|crispy }}
         </fieldset>
       </form>
+    </div>
 
 
-      <button type="submit" class="form-btn"><a href="{% url 'profile-update' %}" id="auth-links">Update Profile</a></button>
+      <div class="button-container"> <!-- Ensure this container is centered -->
+        <a class="cybr-btn" type="submit" href="{% url 'profile-update' %}" id="auth-links">
+          editeaza profil<span aria-hidden>_</span>
+          <span class="cybr-btn__glitch">editeaza</span>
+          <span class="cybr-btn__tag">R25</span>
+        </a>
+        
+      </div>
     </div>
   </article>
 </section>
