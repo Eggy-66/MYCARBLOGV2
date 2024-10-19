@@ -1,0 +1,115 @@
+
+ .header {
+  background-color: #343a40;
+  color: #ffc107;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  height: 50px; /* Adjust as needed */
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.header-nav a {
+  color: #ffc107;
+  margin: 0 15px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.header-nav a:hover {
+  text-decoration: underline;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons a {
+  margin: 0 10px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1); /* makes the icons yellow */
+}
+  
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1; /* Pushes the footer down */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1; /* Pushes the footer down */
+}
+
+.footer {
+  background-color: #343a40;
+  color: #ffc107;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 100px;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 10; /* Ensures visibility over other elements */
+}
+
+.footer-left, .footer-center, .footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo {
+  height: 80px;
+}
+
+.social-icons a {
+  margin: 0 10px;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1); /* makes the icons yellow */
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.footer-right p {
+  margin: 0;
+}

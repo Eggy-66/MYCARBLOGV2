@@ -1,0 +1,163 @@
+.home-blog {
+    
+    padding: 3rem 10rem;
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr; /* First two wide columns for posts, last one narrow */
+    gap: 2rem;
+    background-color: transparent;
+    
+    
+}
+/* Blog posts styling (first two columns) */
+.content-section {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 100%;
+}
+.home-post {
+    background-color: #343a40;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    padding: 3rem;
+}
+.home-post:hover {
+    transform: scale(1.02);
+}
+.media img {
+    width: 100%;
+    max-height: 500px;
+    max-height: 500px;
+    object-fit: cover; 
+}
+.media-body {
+    padding: 1rem;
+}
+.article-metadata {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+.text-author {
+    color: #f8f9fa;
+    font-weight: bold;
+}
+.article-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.article-title a {
+    color: #ffc107;
+    text-decoration: none;
+}
+.article-title a:hover {
+    text-decoration: underline;
+}
+.text-light {
+    color: #adb5bd;
+}
+
+/* Sidebar styling (third column) */
+.sidebar {
+    background-color: #f1f1f1;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    position: sticky; /* Make it sticky */
+    top: 1rem; /* Stick to 1rem from the top */
+    height: fit-content; /* Ensure the sidebar only takes up necessary space */
+    margin-top: 100px;
+    
+}
+.read-more {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+.read-more:hover {
+    background-color: #0056b3;
+}
+.random-stories, .ad-section {
+    margin-bottom: 2rem;
+}
+.random-stories h4, .ad-section h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+.random-story-item {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #343a40;
+}
+.random-story-item:hover {
+    text-decoration: underline;
+}
+.ad-placeholder {
+    width: 100%;
+    height: 150px;
+    background-color: #ddd;
+    border: 1px dashed #ccc;
+    margin-bottom: 1rem;
+}
+
+.pagination ul {
+display: flex;
+list-style: none;
+padding: 0;
+margin: 2rem 0;
+justify-content: center;
+}
+.pagination ul li {
+margin: 0 0.5rem;
+}
+.pagination ul li a {
+color: #007bff;
+text-decoration: none;
+padding: 0.5rem 1rem;
+border: 1px solid #dee2e6;
+border-radius: 5px;
+transition: background-color 0.2s ease;
+}
+.pagination ul li a:hover {
+background-color: #007bff;
+color: white;
+}
+
+.pagination ul {
+display: flex;
+list-style: none;
+padding: 0;
+margin: 2rem 0;
+justify-content: center;
+}
+.pagination ul li {
+margin: 0 0.5rem;
+}
+.pagination ul li a {
+color: #007bff;
+text-decoration: none;
+padding: 0.5rem 1rem;
+border: 1px solid #dee2e6;
+border-radius: 5px;
+transition: background-color 0.2s ease;
+}
+.pagination ul li a:hover {
+background-color: #007bff;
+color: white;
+}
+.pagination ul li.current {
+font-weight: bold;
+padding: 0.5rem 1rem;
+border: 1px solid #007bff;
+border-radius: 5px;
+background-color: #007bff;
+color: white;
+}

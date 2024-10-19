@@ -1,0 +1,492 @@
+
+
+
+:root {
+    --primary-color: #E63946; /* A nice shade of blue */
+    --secondary-color: #2B2D2F; 
+    --tertiary-color: #003F5C; 
+    --fourth-color: linear-gradient(90deg, white 70%, #FF6F00 70%), #E63946;; 
+    --fifth-color: #C0C0C0; 
+    --sixth-color: #36454F; 
+    --seventh-color: #FF6F00; 
+    --eight-color: #F5F5F5; 
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+    
+}
+
+/*###########Styling the navigation bar links########## #ad343e; */
+
+.navbar {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #333;
+    color: #fff;
+    z-index: 1000; /* Ensures it stays above other content */
+    padding: 10px 20px;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.5em;
+}
+
+.nav-items a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.nav-items a:hover {
+    text-decoration: underline;
+}
+
+.socials {
+    display: flex;
+}
+
+.social-icon {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.social-icon:hover {
+    text-decoration: underline;
+}
+
+main {
+    margin-top: 60px; /* Add top margin to prevent content from being hidden */
+    padding: 20px;
+}
+
+
+/* Media query for mobile devices */
+
+
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+    padding: 20px;
+  }
+
+.bt-profile {
+    margin-top: 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 5px;
+    background: #df1313;
+    color: white;
+    width: 200px;
+    text-align: center;
+    transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+  } 
+  
+  .bt-profile:hover {
+    background: var(--seventh-color);
+  }
+  
+
+header{
+    max-height: 100vh;
+    background: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.3)),
+    url(img/header-car.jpg)center/cover fixed no-repeat;
+
+   
+}
+
+
+
+.banner{
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    background-color: transparent;
+}
+
+.banner-center{
+    margin-top: 100vh;
+
+}
+
+.banner h1{
+    font-size: 50px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+}
+
+.banner h3{
+    text-transform: capitalize;
+    font-size: 30px;
+    color: var(--secondary-color);}
+.and{
+    color: grey;
+}
+
+.banner-icons{
+    padding: 20px;
+}
+
+.banner-icons a{
+    display: inline-block;
+    font-size: 30px;
+    background: var(--tertiary-color);
+    padding: 5px 10px;
+    margin: 0 18px;
+    border-radius: 50%;
+    color: var(--fifth-color);
+    transition: color 1s ease, transform 1s ease;
+}
+ .banner-icons a:hover{
+     color: var(--primary-color);
+     transform: translateY(-10px)
+ }
+
+ nav{
+     position: fixed;
+     width: 100%;
+     z-index: 10;
+ }
+
+ @media screen and (min-width:776px){
+    .nav-container{
+        display: none;
+    }
+    nav ul {
+        display: flex!important;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: rgba(13,19,23,0.8);
+        }
+    nav ul a {
+        background: transparent;
+    }
+    nav ul a:hover {
+        background: transparent;
+        padding-left: 20px;
+    }
+}
+/*#############services###############*/
+.services{
+    min-height: 80vh;
+    background: url(img/services-bcg.jpeg)center/cover
+    fixed no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.service{
+    color: var(--fifth-color);
+    display: flex;
+    margin: 40px;
+}
+
+.service-icon{
+    align-self: center;
+    font-size: 60px;
+    margin-right: 20px;
+    padding: 20px;
+    border: 3px solid var(--seventh-color);
+    border-radius: 50px;
+    color: var(--primary-color);
+
+}
+
+.service-text h3{
+    text-transform: uppercase;
+    line-height: 2;
+    color: white;
+
+}
+
+.service-text p{
+margin-top: 5px;
+}
+
+@media screen and (min-height:576px){
+    .services-center{
+        width: 70%;
+    }
+}
+
+@media screen and (min-height:776px){
+    .services-center{
+        width: 50%;
+    }
+    .service-text p{
+        width: 90%; 
+    }
+}
+
+
+/*######################projects##################*/
+.projects{
+    padding: 0 0 100px;
+    background: var(--fourth-color);
+}
+
+.title h2{
+    font-size: 35px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--tertiary-color);
+}
+
+.title-underline{
+    background: var(--primary-color);
+    width: 100px;
+    height: 4px;
+    margin: 10px auto
+}
+
+.title{
+    padding: 40px 0;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.projects-center {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.project {
+    min-width: 100%;
+    box-sizing: border-box;
+    background: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.9));
+}
+
+.projects img {
+    width: 100%;
+    display: block;
+    transition: opacity 2s ease, transform 2s ease;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transform: translateY(-50%);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* js */
+
+
+/*################about###############*/
+
+.about{
+    min-height: 100vh;
+    padding: 100px 0;
+    background: url(img/girl-moto-2.jpg)center/cover
+    fixed no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-card{
+    background: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 60px 40px;
+    font-size: 20px;
+}
+
+.about-card h3{
+ font-size: 40px;
+ text-transform: capitalize;
+}
+
+.about-card .fa-car{
+    font-size: 60px;
+    color: var(--primary-color);
+    margin: 20px 0;
+}
+
+.about-card p{
+    line-height: 2;
+}
+
+/*#############filler#################*/
+.filler{
+    min-height: 70vh;
+    background: url(img/filler-bcg.jpeg)center/cover
+    fixed no-repeat;
+}
+.insigna {
+    position: relative;
+    min-height: 100vh;
+    max-width: 100%;
+
+    background: url(img/header-car.jpg)center/cover
+    fixed no-repeat;
+
+}
+
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Scale the video to cover the container */
+    z-index: -1; /* Ensure the video is behind any content */
+}
+
+/* Optional: Style for any content over the video */
+
+/*############contact##################*/
+/*#Parent container#*/
+
+/*#Child container#*/
+
+/*#############footer##################*/
+footer {
+    background: var(--secondary-color);    
+    padding: 20px 0; /* Reduced padding for a shorter height */
+    text-align: center;
+    margin: 0;
+}
+
+.footer-icons a {
+    display: inline-block;
+    font-size: 30px;
+    margin:0 10px ; /* Reduced margin for tighter spacing */
+    border-radius: 5px;
+    background: var(--fourth-color);
+    color: var(--secondary-color);
+}
+
+footer p {
+    color: var(--fourth-color);
+    font-size: 18px; /* Slightly smaller font size for better spacing */
+    margin: 5px; /* Reduced margin to minimize space */
+}
+
+.media img {
+    
+    width: 100%;
+    height: 650px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.article-metadata {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.article-title {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+.article-content {
+    margin-bottom: 15px;
+}
+/* 
+item_detail */
+.item-forms{
+    min-height: 90vh;
+    background: url(img/street.jpg)center/cover
+    fixed no-repeat;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+.item-image-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically (if needed) */
+    margin: 20px 0; /* Optional: add space around the image */
+    
+}
+
+.item-image-container img {
+    min-width: 400px;
+width: 700px; /* Ensures the image does not exceed the container width */
+    height: auto; /* Maintains the aspect ratio of the image */
+    border-radius: 10px;
+}
+
+
+
+
+
+/* buttons */
+/* Ensure the container of the button is centered */
+
+
+/* Center the button within its container */
+/* Container for the buttons */
+.button-container {  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Adjust gap between buttons if needed */
+}
+
+/* logo header */
+@font-face {
+    font-family: Cyber;
+    src: url('https://assets.codepen.io/605876/Blender-Pro-Bold.otf');
+    font-display: swap;
+  }
+
+  
+
+   .button-container
+   {align-items: center;}
+  
+
+  @font-face {
+    font-family: neon;
+    src: url(https://res.cloudinary.com/lichingchester/raw/upload/v1599563556/fonts/LasEnter_PersonalUseOnly_y8hnzd.ttf);
+  }
+  
+/* ---------- */
+

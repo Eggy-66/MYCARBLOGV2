@@ -3,19 +3,97 @@
 
 
 {% block content %}
+<style>
+.info-container {
+margin: 20px;
+background-color: transparent;
+}
 
-<div class="insigna">
+</style>
+<!-- <div class="insigna">
        
 
     <video autoplay muted playsinline class="background-video">
         <source src="{% static '/css/img/insigna_mid.mp4' %}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    <!-- Add your content here -->
-</div>
+
+</div> -->
+
+  <!--Projects-->
+  <section class="projects">
+    <div class="slider">
+        <button class="slider-btn prev-btn">&#10094;</button>
+        <div class="projects-center">
+            <article class="project">
+                
+                <div class="info-container">
+                    <h3 class="project-title">Civic Type R AWD?</h3>
+                    <p class="project-summary">Honda Civic Type R With 100-HP 'E-Nitrous' AWD!</p>
+                    <a href="https://motortrend.com/reviews/orbis-honda-civic-type-r-awd-review/" class="read-more">Read More</a>
+                    <img src="{% static '/css/img/project-6.jpeg' %}" alt="car">
+                </div>
+            </article>
+            <article class="project">
+                
+                <div class="info-container">
+                    <h3 class="project-title">Project Title 2</h3>
+                    <p class="project-summary">A brief summary of the project.</p>
+                    <a href="external-link-2.html" class="read-more">Read More</a>
+                    <img src="{% static '/css/img/project-4.jpeg' %}" alt="car">
+                </div>
+            </article>
+            <article class="project">
+                
+                <div class="info-container">
+                    <h3 class="project-title">Project Title 3</h3>
+                    <p class="project-summary">A brief summary of the project.</p>
+                    <a href="external-link-2.html" class="read-more">Read More</a>
+                    <img src="{% static '/css/img/project-3.jpeg' %}" alt="car">
+                </div>
+                
+            </article>
+            <article class="project">
+               
+                <div class="info-container">
+                    <h3 class="project-title">Project Title 4</h3>
+                    <p class="project-summary">A brief summary of the project.</p
+                    <a href="external-link-2.html" class="read-more">Read More</a>
+                </div>
+                <img src="{% static '/css/img/project-1.jpeg' %}" alt="car">
+            </article>
+            <article class="project">–
+                
+                <div class="info-container">
+                    <h3 class="project-title">Project Title 5</h3>
+                    <p class="project-summary">A brief summary of the project.</p>
+                    <a href="external-link-2.html" class="read-more">Read More</a>
+                    <img src="{% static '/css/img/project-7.jpg' %}" alt="car">
+                </div>
+            </article>
+            <article class="project">
+                <img src="{% static '/css/img/project-6.jpeg' %}" alt="car">
+                <div class="info-container">
+                    <h3 class="project-title">Project Title 6</h3>
+                    <p class="project-summary">A brief summary of the project.</p>
+                    <a href="external-link-2.html" class="read-more">Read More</a>
+                </div>
+            </article>
+            <!-- Repeat for other projects -->
+        </div>
+        <button class="slider-btn next-btn">&#10095;</button>
+    </div>
+</section>
+
+
+
 
 <!--services-->
 <section class="services">
+    <video autoplay muted playsinline class="background-video">
+        <source src="{% static '/css/img/insigna_mid.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <div class="services-center">
         <article class="service">
             <div class="service-icon">
@@ -37,97 +115,60 @@
        </article>
        <article class="service">
            <div class="service-icon">
-               <i class="fas fa-space-shuttle"></i>
+               <i class="fas fa-cog"></i>
            </div>
            <div class="service-text">
-               <h3>Tindem spre mai mult</h3>
+               <h3>Siguranta in multime</h3>
                <p>Valorificarea experiențelor pentru a crește și a evolua.</p>
            </div>
        </article>
     </div>
    
    </section>
-   <!-- <button class="cybr-btn">
-    Cyber<span aria-hidden>_</span>
-    <span class="cybr-btn__glitch">Cyber_</span>
-    <span class="cybr-btn__tag">R25</span>
-  </button>
-  <button class="cybr-btn">
-    Buttons<span aria-hidden>_</span>
-    <span class="cybr-btn__glitch">Buttons_</span>
-    <span class="cybr-btn__tag">R25</span>
-  </button> -->
-   <!--end of services-->
-   <!--Projects-->
-   <section class="projects">
-   <!--title-->
-   <div class="title">
-       <h2>Proiecte</h2>
-       <div class="title-underline"></div>
-   </div>
-   <!--end of title-->
-   <div class="projects-center">
-       <article class="project">
-           <img src="{% static '/css/img/project-1.jpeg' %}" alt="car">
-       </article>
-       <article class="project">
-           <img src="{% static '/css/img/project-2.jpeg' %}" alt="car">
-       </article>
-       <article class="project">
-           <img src="{% static '/css/img/project-3.jpeg' %}" alt="car">
-       </article>
-       <article class="project">
-           <img src="{% static '/css/img/project-4.jpg' %}" alt="car">
-       </article>
-       <article class="project">
-           <img src="{% static '/css/img/project-5.jpeg' %}" alt="car">
-       </article>
-       <article class="project">
-           <img src="{% static '/css/img/project-6.jpeg' %}" alt="car">
-       </article>
-   
-   </div>
-   
-   </section>
-   <!--end of projects-->
+ 
    
 
    <section class="about">
        <article class="about-card">
-           <h3>despre noi</h3>
+           <h3>Despre Auto Hub</h3>
            <i class="fas fa-car"></i>
-           <p>Platforma noastră dedicată fanilor Honda oferă o experiență captivantă, conectând pasionații automobilelor la ultimele știri, recenzii și evenimente legate de marca Honda. 
+           <p>Platforma noastră dedicată fanilor Honda si tuturor automobilistilor oferă o experiență captivantă, conectând pasionații automobilelor la ultimele știri, recenzii și evenimente legate de marca Honda. 
                Cu articole detaliate, informații despre modele, istorie și inovații tehnologice, explorăm universul fascinant al vehiculelor Honda. 
                Prin galerii foto atractive și comunitatea noastră implicată, încurajăm schimbul de idei și pasiunea comună pentru această marcă emblematică, ducând entuziasmul pentru Honda la un nivel superior."</p>
        </article>
    </section>
    
 
-   <!--filler section, motor-->
 
 
       
-    </article>
+
 </section>
    <!--contact-->
-   <section class="post-forms">
-   <article class="forms-card">
-       <form>
-           <h3>contacteaza-ne</h3>
-           <input class="form-control" type="text" id="name" placeholder="Your name">
-           <input class="form-control" type="text" id="email" placeholder="Your email">
-       <textarea class="form-control" name="comment" id="" cols="30" rows="10" placeholder="Leave a comment">
-       </textarea>
-       <!-- <button type="submit" class="form-btn">Send</button> -->
+   <div class="form-container">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            
 
-      <button type="submit" class="cybr-btn">
-        Trimite<span aria-hidden>_</span>
-        <span class="cybr-btn__glitch">Trimite_</span>
-        <span class="cybr-btn__tag">R25</span>
-      </button>
-      
-       </form>
-   </article>
-   </section>
+            <!-- Title field -->
+            <input type="text" name="title" placeholder="Adresa dvs. e-mail" required>
+            
+            
+            <!-- Content field -->
+            <textarea name="content" placeholder="Mesaj" required></textarea>
+            
+            <!-- Image field -->
+            <!-- <input type="file" name="image" required> -->
+            
+            <div class="button-container">
+                <button type="submit" class="btn btn-primary">Contact</button>
+            </div>
+        </fieldset>
+    </form>
+    </div>
    <!--end of contact-->
+
+  
 {% endblock %}
+

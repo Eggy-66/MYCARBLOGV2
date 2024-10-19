@@ -1,19 +1,20 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<section class="post-forms">
-    <article class="forms-card text-light">
-        
+<div class="login"></div>
+<section class="pf">
+    <article class="profile-card">
+        <form method="POST">
 
-    <form method="POST">
-        <fieldset class="form-group text-light">
-            <legend class="border-bottom mb-2 text-light">Login</legend>
-            
-        </fieldset>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="form-btn">Login</button>
-    </form>
-</article>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="button-container">
+            <button type="submit" class="edit-profile-btn">Login</button>
+        </div>
+        <small class="text-dark">Don't have an account? <a href="{% url 'register' %}">Register</a></small>
+        </form>
+    </article>
 </section>
+</div>
+
 {% endblock %}

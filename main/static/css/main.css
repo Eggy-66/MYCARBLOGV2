@@ -1,58 +1,99 @@
 
 
-  /* *{
-    margin: 0;
-    padding: 0;
-} */
 
 :root {
-    --primary-color: #df1313; /* A nice shade of blue */
-    --secondary-color: #B20F0F; 
-    --tertiary-color: #B20F0F; 
-    --fourth-color: linear-gradient(90deg, white 70%, #e6de00 70%), #e6de00;; 
-    --fifth-color: rgb(255, 255, 255); 
-    --sixth-color: black; 
-    --seventh-color: #dfd804; 
-}
-body{
-    font-family: "Kanit", sans-serif;
+    --primary-color: #E63946; /* A nice shade of blue */
+    --secondary-color: #2B2D2F; 
+    --tertiary-color: #003F5C; 
+    --fourth-color: linear-gradient(90deg, #C0C0C0 70%, #ffc107 70%), #E63946;; 
+    --fifth-color: #C0C0C0; 
+    --sixth-color: #36454F; 
+    --seventh-color: #FF6F00; 
+    --eight-color: #F5F5F5; 
 }
 
+body, html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url("img/background.jpg");
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-attachment: fixed; /* Keeps the image fixed in place when scrolling */
+    
+}
+.main-content {
+    flex: 1; /* Pushes the footer to the bottom */
+  }
 /*###########Styling the navigation bar links########## #ad343e; */
-nav ul{
-    list-style-type: none;
-    display: none;
+
+.navbar {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #333;
+    color: #fff;
+    z-index: 1000; /* Ensures it stays above other content */
+    padding: 10px 20px;
 }
 
-nav ul a{
-    display: block;
-    background: var(--secondary-color);    
-    padding: 20px;
-    font-size: 17px;
+.navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.5em;
+}
+
+.nav-items a {
+    color: #fff;
     text-decoration: none;
-    text-transform: uppercase;
-    color: var(--primary-color);
-    transition: color 2s ease,background 2s;
-    padding: 2s ease;
-
+    margin: 0 15px;
 }
 
-.profile {
+.nav-items a:hover {
+    text-decoration: underline;
+}
+
+.socials {
+    display: flex;
+}
+
+.social-icon {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.social-icon:hover {
+    text-decoration: underline;
+}
+
+main {
+    margin-top: 60px; /* Add top margin to prevent content from being hidden */
+    padding: 20px;
+}
+
+
+/* Media query for mobile devices */
+
+
+
+/* .profile {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center; /* Centers text and inline elements */
-    padding: 20px; /* Optional: Adds padding around the content */
-  }
+    text-align: center; 
+    padding: 20px;
+  } */
 
-nav ul a:hover{
-    background: var(--tertiary-color);
-    color: var(--fourth-color); ;
-    padding-left: 30px;
-    
-}
-.bt-profile {
+/* .bt-profile {
     margin-top: 20px;
     font-size: 20px;
     border-radius: 10px;
@@ -62,37 +103,22 @@ nav ul a:hover{
     width: 200px;
     text-align: center;
     transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
-  }
+  }  */
   
-  .bt-profile:hover {
-    background: #c11212;
+  /* .bt-profile:hover {
+    background: var(--seventh-color);
   }
-  
-/* .nav-container img{
-    width: 100px;
-    align-self: center;
-} */
-
-
-/* .btn{
-    padding: 2px;
-    display: inline-block;
-    border: 2px solid var(--primary-color);
-    align-self: center;
-} */
+   */
 
 header{
     max-height: 100vh;
-    background: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.3)),
+    background: #343a40;
     url(img/header-car.jpg)center/cover fixed no-repeat;
 
    
 }
 
 
-/* nav{
-    flex: 0 0 auto;
-} */
 
 .banner{
     flex: 1 0 auto;
@@ -217,11 +243,11 @@ margin-top: 5px;
     }
 }
 
-
 /*######################projects##################*/
 .projects{
     padding: 0 0 100px;
     background: var(--fourth-color);
+    min-height: 550px;
 }
 
 .title h2{
@@ -235,41 +261,67 @@ margin-top: 5px;
     background: var(--primary-color);
     width: 100px;
     height: 4px;
-    margin: 10px auto
+    margin: 10px auto;
 }
 
 .title{
     padding: 40px 0;
 }
 
-.project{
-    background: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.9));
+.slider {
+    position: relative;
+    width: 100%;
     overflow: hidden;
 }
-.projects img{
+
+.projects-center {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.project {
+    min-width: 100%;
+    box-sizing: border-box;
+   
+}
+
+.projects img {
     width: 100%;
+    max-height: 65vh; /* Change to viewport height for better responsiveness */
+    object-fit: cover; /* Ensures the image covers the container without stretching */
     display: block;
-    transition: opacity 2s ease,transform 2s ease;
+    transition: opacity 2s ease, transform 2s ease;
 }
 
-.projects img:hover{
-    opacity: 0.3;
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
     cursor: pointer;
-    transform:scale(1.3)
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transform: translateY(-50%);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
 }
 
 
-@media screen and (min-width:576px){
-    .projects-center{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-}
-@media screen and (min-width:992px){
-    .projects-center{
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
+/* js */
+
+
 /*################about###############*/
 
 .about{
@@ -304,16 +356,6 @@ margin-top: 5px;
     line-height: 2;
 }
 
-@media screen and (min-width: 776px){
-    .about-card{
-        max-width: 50%;
-        border-radius: 30px;
-    }
-    .about-card{
-        max-width: 70%;
-        margin: 0 auto;
-    }
-}
 /*#############filler#################*/
 .filler{
     min-height: 70vh;
@@ -321,10 +363,17 @@ margin-top: 5px;
     fixed no-repeat;
 }
 .insigna {
+    /* position: relative;
+    min-height: 100vh;
+    max-width: 100%;
+
+    background: url(img/header-car.jpg)center/cover
+    fixed no-repeat; */
     position: relative;
     min-height: 100vh;
-    overflow: hidden; /* Ensure the video does not overflow */
+    overflow: hidden
 }
+
 
 .background-video {
     position: absolute;
@@ -337,71 +386,15 @@ margin-top: 5px;
 }
 
 /* Optional: Style for any content over the video */
-.insigna-content {
-    position: relative;
-    z-index: 1; /* Ensure content is above the video */
-    color: white; /* Example text color */
-}
 
 /*############contact##################*/
 /*#Parent container#*/
 
 /*#Child container#*/
 
-
-
 /*#############footer##################*/
-footer {
-    background: var(--secondary-color);    
-    padding: 20px 0; /* Reduced padding for a shorter height */
-    text-align: center;
-    margin: 0;
-}
-
-.footer-icons a {
-    display: inline-block;
-    font-size: 30px;
-    margin:0 10px ; /* Reduced margin for tighter spacing */
-    border-radius: 5px;
-    background: var(--fourth-color);
-    color: var(--secondary-color);
-}
-
-footer p {
-    color: var(--fourth-color);
-    font-size: 18px; /* Slightly smaller font size for better spacing */
-    margin: 5px; /* Reduced margin to minimize space */
-}
 
 
-
-
-
-
-
-.media img {
-    
-    width: 100%;
-    height: 650px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-.article-metadata {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-.article-title {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-}
-.article-content {
-    margin-bottom: 15px;
-}
-/* 
-item_detail */
 .item-forms{
     min-height: 90vh;
     background: url(img/street.jpg)center/cover
@@ -412,7 +405,6 @@ item_detail */
     
 
 }
-
 
 .item-image-container {
     display: flex;
@@ -430,199 +422,16 @@ width: 700px; /* Ensures the image does not exceed the container width */
 }
 
 
-/* home-blog */
-
-.content-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;     
-    justify-content: center;
-    max-width: 100vh;
-    justify-content: center;
-    background-color: transparent;
-    margin: 0 auto;
-}           
-
-.home-blog {
-    padding-top: 100px;
-    padding-bottom: 65px;
-    min-height: 80vh;
-    background: url(img/red-car-girl.jpg) center/cover fixed no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 
-.home-post {   
-      flex: 1 1 calc(80% - 10px);
-      border: 1px solid #ddd;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      background: linear-gradient(black, rgba(255,255,255,0.3));
-    
-  }
-.text-author {
-    color: var(--primary-color);
-}
-/* post-detail */
-
-.post{
-    color:#ddd;
-    padding:30px;
-}
-.post h1 {   
-    color: white;
-    }
-    .post p {
-        color: white; /* Slightly lighter grey */
-    }
-.post-forms{
-    min-height: 90vh;
-    background: url(img/project-4.jpg)center/cover
-    fixed no-repeat;    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 0;
-    position: relative;
-}
-/*#Child container#*/
-/* .post-forms-card{
-    border-radius: 10px;
-    flex:0 0 80%;
-    padding: 40px;
-    background: linear-gradient(black, rgba(255,255,255,0.3));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 65px 0; 
-    max-width: fit-content;
-} */
-
-
-  .post-image {
-      width: 100%; /* Ensures the image takes full width of its container */
-      max-height: 600px; /* Maintains aspect ratio */
-      object-fit: cover; /* Ensures the image covers the entire container */
-      border-radius: 5px;
-      margin-bottom: 10px;
-  }
-  .avatar {
-    height: 50px;
-    
-  }
-
-  .forms-card{
-    flex:0 0 80%;
-    padding: 40px 0;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    margin:100px 0;
-    max-width: 800px;
-    
-}
-
-form{
-
-    flex: 0 0 0%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-width: 500px;
-
-}
-
-form input{
-    padding: 5px;
-    border: 3px solid var(--primary-color);
-    border-radius: 5px;
-}
-
-form h3{
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--primary-color);
-}
-
-.form-control {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 3px solid var(--primary-color);
-    border-radius: 5px;
-    font-size: 20px;
-    
-}
-.white-text {
-        color: white;
-    }
-.form-file {
-    width: 100%;
-    padding: 10px;
-    
-    border: none;
-    font-size: 15px;
-}
-  /*   .form-btn {
-    border-radius: 4px;
-    margin: 10px auto 0; 
-}*/
-
-/* form textarea{
-    padding: 5px;
-    border: 3px solid var(--primary-color);
-    border-radius: 20px;
-} */
-
-input::placeholder,
-textarea::placeholder{
-    
-    color: var(--secondary-color);}
-
-/* .form-btn{
-    margin-top: 20px;
-    font-size: 20px;
-    border-radius: 10px;
-    padding: 5px;
-    background: var(--primary-color);
-    color: var(--fifth-color);
-    width: 200px; 
-    text-align: center;
-    transition: color 1s ease-in-out,background 1s
-    ease-in-out
-}
-.form-btn:hover{
-    color: var(--primary-color);
-    background: var(--fourth-color);
-} */
 
 /* buttons */
 /* Ensure the container of the button is centered */
-.form, .forms-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Center horizontally */
-}
 
-/* Center the button within its container */
-/* Ensure the container of the button is centered */
-.form, .forms-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Center horizontally */
-}
 
 /* Center the button within its container */
 /* Container for the buttons */
-.button-container {
-    
+.button-container {  
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -630,4 +439,25 @@ textarea::placeholder{
     gap: 10px; /* Adjust gap between buttons if needed */
 }
 
-/* Adjusted button styles */
+/* logo header */
+@font-face {
+    font-family: Cyber;
+    src: url('https://assets.codepen.io/605876/Blender-Pro-Bold.otf');
+    font-display: swap;
+  }
+
+  
+
+  
+
+   .button-container
+   {align-items: center;}
+  
+
+  @font-face {
+    font-family: neon;
+    src: url(https://res.cloudinary.com/lichingchester/raw/upload/v1599563556/fonts/LasEnter_PersonalUseOnly_y8hnzd.ttf);
+  }
+  
+/* ---------- */
+

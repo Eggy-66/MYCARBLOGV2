@@ -1,26 +1,62 @@
 {% extends 'main/base.html' %}
-{% load crispy_forms_tags %}
-
-
 {% block content %}
-<section class="post-forms">
-    <article class="forms-card">
-      <div class="post">
+{% load static %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<section class="pf">
+  <article class="profile-card">
+    <div class="profile-content">
+      <div class="profile-info">
+        <img class="profile-img" src="{{ user.profile.image.url }}" alt="User Profile Image">
+
+        <h1 class="profile-username">{{ user.username|title }}</h1>
+        <p class="profile-email">{{ user.email }}</p>
+
         <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4 text-light">Update Profile</legend>
-                {{ u_form|crispy }}
-                {{ p_form|crispy }}
-            </fieldset>
+          {% csrf_token %}
+          <fieldset class="form-group-container">
+            <!-- Example fields, replace with your actual form fields -->
             <div class="form-group">
-                <button type="submit" class="form-btn">Update</button>
-<!--                <button class="btn btn-outline-info" type="submit"><a href="{% url 'profile' %}">Go Back</a></button>-->
+              <label for="id_username">Username:</label>
+              <input type="text" id="id_username" name="username" value="{{ u_form.username.value }}" required>
+            </div>
+            <div class="form-group">
+              <label for="id_email">Email:</label>
+              <input type="email" id="id_email" name="email" value="{{ u_form.email.value }}" required>
+            </div>
+            <div class="form-group">
+              <label for="id_profile_picture">Profile Picture:</label>
+              <input type="file" id="id_profile_picture" name="profile_picture">
+            </div>
+            <!-- Add additional fields as needed -->
+
+            <!-- Assuming p_form has password fields -->
+            <div class="form-group">
+              <label for="id_password1">New Password:</label>
+              <input type="password" id="id_password1" name="password1">
+            </div>
+            <div class="form-group">
+              <label for="id_password2">Confirm Password:</label>
+              <input type="password" id="id_password2" name="password2">
             </div>
 
+            <button type="submit" class="submit-btn">Submit</button>
+          </fieldset>
         </form>
+      </div>
 
+      <div class="button-container">
+        <a class="edit-profile-btn" href="{% url 'profile-update' %}">
+          Edit Profile
+        </a>
+      </div>
     </div>
-</article>
+  </article>
 </section>
+
+<style>
+    /* General Styles */
+
+</style>
 {% endblock content %}

@@ -1,291 +1,353 @@
-{% extends "main/base.html" %}
-
+{% extends 'main/base.html' %}
 {% block content %}
 
-<style>
-
-/* Container for the item grid */
-.shop {
-    padding-top: 100px;
-    padding-bottom: 65px;
-    min-height: 80vh;
-    background: url(../main/static/css/img/project-4.jpg) center/cover no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.item-list {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 6 items per row */
-    gap: 20px; /* Space between items */
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-width: 1200px; /* Adjust as needed */
-    
-}
-
-.item {
-    border: none;
-    border-radius: 8px;
-    overflow: hidden; /* Ensures content does not overflow */
-    background: linear-gradient(black, rgba(255,255,255,0.3));
-    padding: 20px; /* Padding inside each item */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.item-photo {
-    width: 100%;
-    height: auto; /* Keeps aspect ratio */
-    display: block;
-    margin-bottom: 10px; /* Space between photo and content */
-}
-
-.placeholder {
-    text-align: center;
-    color: white;
-    font-style: italic;
-    margin: 10px 0; /* Adjust space around placeholder */
-}
-
-.item-info {
-    text-align: center;
-    
-}
-.item-info h2 {
-    text-decoration: none;
-    text-transform: none;
-    color: #B20F0F;
-}
-
-.item-info h2:hover {
-    text-decoration: none; /* Ensure underline is removed on hover */
-}
-
-.add-item-link {
-    display: block;
-    margin-top: 20px;
-    text-align: center;
-    color: var(--primary-color); /* Adjust color as needed */
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.add-item-link:hover {
-    
-    color: white;
-    text-decoration: none;
-}
-
-/* Pagination styles */
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.pagination a,
-.pagination span {
-    margin: 0 5px;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #B20F0F;
-    background: linear-gradient(rgba(0, 0, 0, 0.346), rgba(255, 255, 255, 0.074));
-}
-
-.pagination a:hover {
-    background-color: #f0f0f0;
-}
-
-.pagination .active {
-    background-color: #ddd;
-    font-weight: bold;
-}
-
-
-.filter-form {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 6 items per row */
-    gap: 20px; /* Space between items */
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-width: 1200px; /* Adjust as needed */
-}
-
-
-
-.collapsible {
-    color: var(--fifth-color); 
-    background: linear-gradient(rgba(0, 0, 0, 0.346), rgba(255, 255, 255, 0.074));
-    cursor: pointer;
-    padding: 10px;
-    width: 20%;
-    border: none;
-    text-align: center;
-    outline: none;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    transition: color 0.3s, background 0.3s; /* Smooth transition for color and background */
-}
-
-.collapsible:hover {
-    color: red; /* Change text color to red */
-    background: linear-gradient(rgba(255, 0, 0, 0.3), rgba(255, 255, 255, 0.3)); /* Highlight background */
-}
-
-/* Style the content */
-.content {
-    display: none;
-    overflow: hidden;
-    padding: 0 10px;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    background-color: transparent;
-}
-
-
-
-.filter {
-    margin-bottom: 1rem; /* Space between form fields */
-    flex: 1 1 auto; /* Allow the filter to grow and shrink */
-    min-width: 200px; /* Minimum width for the filter elements */
-}
-
-.text-light {
-    
-    color: var(--primary-color); 
-    padding: 0.5rem;
-    
-    border-radius: 0.25rem;
-}
-.item-list p {
-    color: white;
-}
-
-
-
-</style>
 <section class="shop">
-    <button class="collapsible">Filtreaza cautarea</button>
-    <div class="content">
-        <form method="GET" action="{% url 'shop:item_list' %}" class="filter-form">
-            <div class="filter">
-                <input type="text" name="model" id="model" value="{{ request.GET.model }}" placeholder="Model" class="text-dark">
-            </div>
-            <div class="filter">
-                <input type="number" name="year_min" id="year_min" value="{{ request.GET.year_min }}" placeholder="Year (Min)" class="text-dark">
-            </div>
-            <div class="filter">
-                <input type="number" name="year_max" id="year_max" value="{{ request.GET.year_max }}" placeholder="Year (Max)" class="text-dark">
-            </div>
-
-            <div class="filter">
-                <input type="number" name="price_min" id="price_min" value="{{ request.GET.price_min }}" placeholder="Price (Min)" class="text-dark">
-            </div>
-            <div class="filter">
-                <input type="number" name="price_max" id="price_max" value="{{ request.GET.price_max }}" placeholder="Price (Max)" class="text-dark">
-            </div>
-                        <div class="filter">
-                <label class="text-light" for="cabin_type">Cabin Type:</label>
-                <select name="cabin_type" id="cabin_type">
-                    <option value="">All</option>
-                    <option value="SUV" {% if request.GET.cabin_type == "SUV" %}selected{% endif %}>SUV</option>
-                    <option value="Sedan" {% if request.GET.cabin_type == "Sedan" %}selected{% endif %}>Sedan</option>
-                    <option value="Hatchback" {% if request.GET.cabin_type == "Hatchback" %}selected{% endif %}>Hatchback</option>
-                    <!-- Add other cabin types as needed -->
-                </select>
-            </div>
-            <div class="filter">
-                <label class="text-light" for="fuel">Fuel:</label>
-                <select name="fuel" id="fuel">
-                    <option value="">All</option>
-                    <option value="Gas" {% if request.GET.fuel == "Gas" %}selected{% endif %}>Gas</option>
-                    <option value="Diesel" {% if request.GET.fuel == "Diesel" %}selected{% endif %}>Diesel</option>
-                    <option value="Hybrid" {% if request.GET.fuel == "Hybrid" %}selected{% endif %}>Hybrid</option>
-                    <!-- Add other fuel types as needed -->
-                </select>
-            </div>
-            <button type="submit" class="form-btn">GO!</button>
-        </form>
-    </div>
-    
-    </form>
-    
-    <ul class="item-list">
-        
-        {% for item in page_obj %}
-        <li class="item">
-            {% if item.photo %}
-                <img src="{{ item.photo.url }}" alt="{{ item.name }} Photo" class="item-photo">
-            {% else %}
-                <img src="" alt="Placeholder Photo" class="item-photo">
-                <div class="placeholder">Placeholder</div>
-            {% endif %}
-            <div class="item-info">
-                <a href="{% url 'shop:item_detail' item.pk %}">
-                    <h2>{{ item.name }}</h2>
-                </a>
-                <!-- <p>Model: {{ item.model }}</p> -->
-                <p>Year: {{ item.year }}</p>
-                <p>Power: {{ item.power }}</p>
-                <p>Fuel: {{ item.fuel }}</p>
-                <p>Cabin Type: {{ item.cabin_type }}</p>
-                <p>Price: ${{ item.price }}</p>
-                <!-- <p>Phone Number: {{ item.phone_nr }}</p> -->
-                <!-- <p>Description: {{ item.description|truncatewords:3 }}</p> -->
+    <div class="main-content">
+        <ul class="item-list">
+            {% for item in page_obj %}
+            <li class="item">
                 
-            </div>
-        </li>
-        {% empty %}
-        <li>No items found.</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'shop:add_item' %}" class="add-item-link">Add a new item</a>
+                {% if item.photo %}
+                    <img src="{{ item.photo.url }}" alt="{{ item.name }} Photo" class="item-photo">
+                {% else %}
+                    <div class="item-photo">
+                        <div class="placeholder">Placeholder</div>
+                    </div>
+                {% endif %}
+                <div class="item-info">
+                    <a href="{% url 'shop:item_detail' item.pk %}">
+                        <h2>{{ item.name }}</h2>
+                    </a>
+                    <p>Year: {{ item.year }}</p>
+                    <p>Power: {{ item.power }}</p>
+                    <p>Fuel: {{ item.fuel }}</p>
+                    <p>Cabin Type: {{ item.cabin_type }}</p>
+                    <p>Price: ${{ item.price }}</p>
+                </div>
+            </li>
+            {% empty %}
+            <li>No items found.</li>
+            {% endfor %}
+        </ul>
 
-    <!-- Pagination controls -->
-    <div class="pagination">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">First</a>
-            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
-        {% endif %}
+        <button class="collapsible">Filtreaza cautarea</button>
+        <div class="content">
+            <form method="GET" action="{% url 'shop:item_list' %}" class="filter-form">
+                <div class="filter">
+                    <input type="text" name="model" id="model" value="{{ request.GET.model }}" placeholder="Model">
+                </div>
+                <div class="filter">
+                    <input type="number" name="year_min" id="year_min" value="{{ request.GET.year_min }}" placeholder="Year (Min)">
+                </div>
+                <div class="filter">
+                    <input type="number" name="year_max" id="year_max" value="{{ request.GET.year_max }}" placeholder="Year (Max)">
+                </div>
+                <div class="filter">
+                    <input type="number" name="price_min" id="price_min" value="{{ request.GET.price_min }}" placeholder="Price (Min)">
+                </div>
+                <div class="filter">
+                    <input type="number" name="price_max" id="price_max" value="{{ request.GET.price_max }}" placeholder="Price (Max)">
+                </div>
+                <div class="filter">
+                    <label for="cabin_type">Cabin Type:</label>
+                    <select name="cabin_type" id="cabin_type">
+                        <option value="">All</option>
+                        <option value="SUV" {% if request.GET.cabin_type == "SUV" %}selected{% endif %}>SUV</option>
+                        <option value="Sedan" {% if request.GET.cabin_type == "Sedan" %}selected{% endif %}>Sedan</option>
+                        <option value="Hatchback" {% if request.GET.cabin_type == "Hatchback" %}selected{% endif %}>Hatchback</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label for="fuel">Fuel:</label>
+                    <select name="fuel" id="fuel">
+                        <option value="">All</option>
+                        <option value="Gas" {% if request.GET.fuel == "Gas" %}selected{% endif %}>Gas</option>
+                        <option value="Diesel" {% if request.GET.fuel == "Diesel" %}selected{% endif %}>Diesel</option>
+                        <option value="Hybrid" {% if request.GET.fuel == "Hybrid" %}selected{% endif %}>Hybrid</option>
+                    </select>
+                </div>
+                <button type="submit" class="form-btn">GO!</button>
+            </form>
+        </div>
 
-        {% for num in page_obj.paginator.page_range %}
-            {% if page_obj.number == num %}
-                <span class="active">{{ num }}</span>
-            {% else %}
-                <a href="?page={{ num }}">{{ num }}</a>
+        <a href="{% url 'shop:add_item' %}" class="add-item-link">Add a new item</a>
+        
+
+        <!-- Pagination controls -->
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">First</a>
+                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
             {% endif %}
-        {% endfor %}
 
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-        {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <span class="active">{{ num }}</span>
+                {% else %}
+                    <a href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+        </div>
     </div>
+
+    <aside class="sidebar">
+        <h2>Recent Blog Posts</h2>
+        {% for post in posts %}
+            <div class="post-summary">
+                <img src="{{ post.photo.url }}" alt="{{ post.title }}">
+                <h3>{{ post.title }}</h3>
+                <p>By {{ post.author }}</p>
+            </div>
+        {% endfor %}
+    </aside>
+    
 </section>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var coll = document.getElementsByClassName("collapsible");
-        var i;
-    
-        for (i = 0; i < coll.length; i++) {
+        for (var i = 0; i < coll.length; i++) {
             coll[i].addEventListener("click", function() {
                 this.classList.toggle("active");
                 var content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
+                content.style.display = (content.style.display === "block") ? "none" : "block";
             });
         }
     });
-    </script>
+</script>
 
-{% endblock %}
+<style>
+    .shop {
+    width: 95%;
+    max-width: 100%;
+    margin: 50px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+}
 
+.main-content {
+    flex: 3;
+}
+
+.sidebar {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Collapsible button */
+.collapsible {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    width: 30%;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.collapsible.active {
+    background-color: #0056b3;
+}
+
+/* Collapsible content */
+.content {
+    box-sizing: border-box;
+    display: none;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* Filter form styling */
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.filter {
+    flex: 1 1 45%;
+}
+
+.filter input, .filter select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.filter label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.form-btn:hover {
+    background-color: #218838;
+}
+
+/* Item list styling */
+.item-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.item {
+    width: calc(33.333% - 20px);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.item-photo {
+    max-width: 300px;
+    height: 18vh;
+    border-bottom: 1px solid #ddd;
+}
+
+.placeholder {
+    padding: 20px;
+    color: #aaa;
+    font-size: 16px;
+}
+
+.item-info {
+    padding: 10px;
+}
+
+.item-info h2 {
+    font-size: 18px;
+    margin: 0;
+    color: #007bff;
+}
+
+.item-info p {
+    margin: 5px 0;
+}
+
+.add-item-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.add-item-link:hover {
+    text-decoration: underline;
+}
+
+/* Pagination controls */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #007bff;
+    background-color: #f1f1f1;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+.pagination .active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+/* New section styles */
+.random-stories {
+    margin-top: 50px;
+}
+
+.random-stories h3 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.stories-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.story {
+    flex: 1 1 45%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 10px;
+}
+
+.story-placeholder {
+    padding: 20px;
+    color: #aaa;
+    font-size: 16px;
+    text-align: center;
+}
+
+.ads {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.ad-placeholder {
+    width: 300px;
+    height: 250px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+}
+</style>
+
+{% endblock content %}

@@ -20,9 +20,10 @@ from django.contrib.auth.decorators import login_required
 
 class PostListView(LoginRequiredMixin, ListView):
     model = Post
-    template_name = 'blog/blog_home.html'
+    template_name = 'blog/blog_home.html'  # Specify your template here
     context_object_name = 'posts'
     ordering = ["-date_posted"]
+    paginate_by = 8  # Add pagination (8 posts per page)
 
 
 class PostDetailView(LoginRequiredMixin, DetailView):
@@ -31,7 +32,7 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'summary', 'content', 'image']  # Add 'image' field
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -46,7 +47,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'summary', 'content', 'image']  # Add 'image' field
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -54,10 +55,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         post = self.get_object()
-        if self.request.user == post.author:
-            return True
-        return False
-
+        return self.request.user == post.author
 
 class PostDeleteView(DeleteView):
     model = Post

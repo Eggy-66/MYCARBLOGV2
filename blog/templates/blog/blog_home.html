@@ -1,34 +1,78 @@
 {% extends 'main/base.html' %}
 {% block content %}
-
+<style>
+       
+</style>
 
 </head>
 <body>
 
-<section class="home-blog">
-      <div class="content-section">
-        {% for post in posts %}
-        <article class="home-post">
+  <section class="home-blog">
+    <!-- Blog posts (first two columns) -->
+    <div class="content-section">
+      {% for post in posts %}
+      <article class="home-post">
           <div class="media">
-              <img src="{{ post.image.url | default_if_none:'/path/to/placeholder.png' }}" alt="Author Image">
+              <img src="{{ post.image.url | default_if_none:'/path/to/placeholder.png' }}" alt="Post Image">
           </div>
           <div class="media-body">
               <div class="article-metadata">
-                  <h4 class="text-author" href="#">{{ post.author }}</h4>
+                  <h4 class="text-author">{{ post.author }}</h4>
                   <small class="text-white">{{ post.date_posted }}</small>
               </div>
-              <h2 class="article-title"><a class="text-light" href="{% url 'blog-detail' post.id %}">{{ post.title }}</a></h2>
+              <h2 class="article-title"><a href="{% url 'blog-detail' post.id %}">{{ post.title }}</a></h2>
               <p class="text-light">{{ post.content|truncatewords:50 }}</p>
-              
-                  
-                  
-              
           </div>
-        </article>
+      </article>
         {% endfor %}
-        </div>
+           <!-- Pagination controls -->
+    <div class="pagination">
+      <ul>
+          <!-- Previous page link -->
+          {% if page_obj.has_previous %}
+          <li><a href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+          {% endif %}
 
+          <!-- Page numbers -->
+          {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+          <li class="current">{{ num }}</li>
+          {% else %}
+          <li><a href="?page={{ num }}">{{ num }}</a></li>
+          {% endif %}
+          {% endfor %}
+
+          <!-- Next page link -->
+          {% if page_obj.has_next %}
+          <li><a href="?page={{ page_obj.next_page_number }}">Next</a></li>
+          {% endif %}
+      </ul>
+  </div>
+
+    </div>
+
+    <div class="sidebar">
+      <!-- Read More Button -->
+      <a href="#" class="read-more">Read More</a>
+      
+      <!-- Random Stories Section -->
+      <div class="random-stories">
+          <h4>Random Stories</h4>
+          <div class="random-story-item"><a href="#">Exciting news about tech innovation</a></div>
+          <div class="random-story-item"><a href="#">How AI is shaping the future</a></div>
+          <div class="random-story-item"><a href="#">Top 5 gadgets to check out</a></div>
+          <!-- More random stories can go here -->
+      </div>
+      
+      <!-- Ads Section -->
+      <div class="ad-section">
+          <h4>Sponsored Ads</h4>
+          <div class="ad-placeholder">Ad Placeholder 1</div>
+          <div class="ad-placeholder">Ad Placeholder 2</div>
+      </div>
+  </div>
 </section>
+
 
 
 </body>

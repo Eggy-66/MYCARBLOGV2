@@ -2,16 +2,15 @@ user: eggy_  (eggy,eugen,profil1,user1,user2,user32)
 parola: parola789
 ------------
 
-python3 -m venv venv
+(create) python3 -m venv venv
 
-source venv/bin/activate
+(activate) source venv/bin/activate
 
 
 python3 manage.py import_items untitled.xlsx
 
 pip3 install django
-pip install pillow
-django-admin startproject mycarenthusiastsite
+pip3 install pillow
 
 python3 manage.py startapp main
 

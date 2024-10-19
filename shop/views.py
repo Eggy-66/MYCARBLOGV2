@@ -3,8 +3,21 @@ from django.contrib.auth.decorators import login_required
 from .models import Item, Message
 from .forms import ItemForm, MessageForm
 from django.core.paginator import Paginator
+from blog.models import Post
+import random
+
 
 from django.urls import reverse_lazy
+
+def shop_list(request):
+    products = Product.objects.all()
+    # Query for the most recent blog posts, or use another filter if needed
+    recent_blog_posts = Post.objects.all().order_by('-date_posted')[:5]  # Adjust the number of posts as needed
+    context = {
+        'products': products,
+        'recent_blog_posts': recent_blog_posts
+    }
+    return render(request, 'shop/shop_list.html', context)
 
 def item_list(request):
     items = Item.objects.all()

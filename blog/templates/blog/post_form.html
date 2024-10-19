@@ -1,42 +1,35 @@
 {% extends 'main/base.html' %}
-{% load crispy_forms_tags %}
-
-
 
 {% block content %}
 <style>
 
 </style>
+<div class="container">
+<div class="content">
+<div class="form-container">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <h3>Post Nou</h3>
 
-
-<section class="post-forms">
-    <article class="forms-card">
-
-            <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <h3>Post Nou<h3>
-                <input type="text" id="title" name="title" class="form-control" placeholder="Enter your title">
-                <textarea id="content" name="content" class="form-control" placeholder="Write your content here"></textarea>
+            <!-- Title field -->
+            <input type="text" name="title" placeholder="Title" required>
             
+            <!-- Summary field -->
+            <input type="text" name="summary" placeholder="Summary" required>
             
-                <input type="file" name="photo" accept="image/*" class="form-file">
-            </fieldset>
+            <!-- Content field -->
+            <textarea name="content" placeholder="Content" required></textarea>
             
-            <!-- <button type="submit" class="form-btn">Posteaza</button> -->
+            <!-- Image field -->
+            <input type="file" name="image" required>
+            
             <div class="button-container">
-            <button type="submit" class="cybr-btn">
-                posteaza<span aria-hidden>_</span>
-                <span class="cybr-btn__glitch">posteaza</span>
-                <span class="cybr-btn__tag">R25</span>
-              </button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
-        </form>
-    </article>
-    </section>
-{% endblock content %}
-
-
-
+        </fieldset>
+    </form>
 </div>
-
+</div>
+</div>
+{% endblock content %}

@@ -1,53 +1,54 @@
 {% extends 'main/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<style>
 
+<style>
+  /* General Page Styles */
+  
 </style>
 
-<section class="post-forms">
-  <article class="forms-card">
+<section class="first-card">
+  <article class="second-card">
     
-            <div class="post">
+    <div class="post">
 
-              <h2><a class="text-light" href="#">{{ object.title }}</a></h2>
-              <p class="text-light">{{ object.content }}
-                <br>
-                <br>
-              {% if object.image %}
-              
-              <img class = "post-image" src="{{ object.image.url }}" alt="{{ object.title }} Image">
-            {% endif %}
-            
+      <h2>{{ object.title }}</h2>
+      <h3>{{ object.subcontent }}</h3>
+      <p>{{ object.content }}</p>
 
-            
-              <img class="avatar" src="{{ object.author.profile.image.url }}" alt="">
-              <a class="text-yellow-300" href="#">{{ object.author }}</a>
-              <small class="text-light">{{ object.date_posted }}</small> <br>
-                {% if object.author == user %} 
+      {% if object.image %}
+        <img class="post-image" src="{{ object.image.url }}" alt="{{ object.title }} Image">
+      {% endif %}
 
+      <!-- Post Footer: Avatar, Author, and Date -->
+      <div class="post-footer">
+        <img class="avatar" src="{{ object.author.profile.image.url }}" alt="Author Avatar">
+        
+        <div class="author-info">
+          <a class="text-yellow-300" href="#">{{ object.author }}</a>
+        </div>
 
-                  <div class="button-container"> <!-- Ensure this container is centered -->
-                    <a class="cybr-btn" href="{% url 'blog-update' object.id %}">
-                      editeaza<span aria-hidden>_</span>
-                      <span class="cybr-btn__glitch">editeaza</span>
-                      <span class="cybr-btn__tag">R25</span>
-                    </a>
-                    <a class="cybr-btn" href="{% url 'blog-delete' object.id %}">
-                      Sterge<span aria-hidden>_</span>
-                      <span class="cybr-btn__glitch">Sterge</span>
-                      <span class="cybr-btn__tag">R25</span>
-                    </a>
-                  </div>
-                  
-                {% endif %}
-            </div>
+        <small class="post-date">{{ object.date_posted }}</small>
+      </div>
+
+      <!-- Edit and Delete Buttons -->
+      {% if object.author == user %}
+        <div class="button-container">
+          <a href="{% url 'blog-update' object.id %}">
+            <button type="button" class="btn btn-primary">
+              Editeaza
+            </button>
+          </a>
+          <a href="{% url 'blog-delete' object.id %}">
+            <button type="button" class="btn btn-danger">
+              Sterge
+            </button>
+          </a>
+        </div>
+      {% endif %}
+    </div>
           
-</article>
-
+  </article>
 </section>
 
-<style>
-
-</style>
 {% endblock content %}
