@@ -1,4 +1,5 @@
-![Screenshot 2025-02-25 at 12 34 50](https://github.com/user-attachments/assets/11bfd0bc-e089-46d2-af70-29ebf63c604c)
+<img width="1197" alt="Screenshot 2025-02-25 at 12 36 51" src="https://github.com/user-attachments/assets/3c5c109d-01ad-4f75-9e1a-06d58c2a3df7" />
+
 
 # MyCarBlog
 
